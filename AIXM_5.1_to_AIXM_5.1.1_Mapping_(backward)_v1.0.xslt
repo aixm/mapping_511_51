@@ -3,7 +3,7 @@
 <!--AIXM 5.1.1-->
 <!--www.aixm.aero-->
 <!--Released:  June 2015-->
-<!--Author: Andrei Ghencea (Trainee EUROCONTORL)--> 
+<!--Author: Andrei Ghencea (Trainee EUROCONTROL)-->
 <!--====================================================================-->
 <!--
 		Copyright (c) 2015, EUROCONTROL
@@ -28,12 +28,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			This warning is a bug from Saxon which doesn't affect the output.
 		==========================================
 	-->
-<!-- Component: XSLT scripts: backward mapping (AIXM5.1.1 to AIXM 5.1) -->
+<!-- Component: XSLT scripts: backward mapping (AIXM 5.1.1 to AIXM 5.1) -->
 
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gml="http://www.opengis.net/gml/3.2">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
-	<!--identity tranformation to copy the unchanged nodes-->
+	<!--identity transformation to copy the unchanged nodes-->
 <xsl:template match="@* | node()">
 	<xsl:copy>
 		<xsl:apply-templates select="@* | node()" />
@@ -253,7 +253,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-164 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-164)-->
-	<!--fn:matches was used to idenfity the required patern for Note.propertyName-->
+	<!--fn:matches was used to identify the required pattern for Note.propertyName-->
 <xsl:template match="aixm:Note[aixm:propertyName]">
 	<xsl:choose>
 		<xsl:when test="aixm:propertyName[matches(text(),'^[a-z][A-Za-z]*$')]">
