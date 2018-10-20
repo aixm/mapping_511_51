@@ -70,7 +70,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
-<xsl:template match="aixm:Navaid//aixm:signalPerformance[text()='OTHER:IIIA'or'OTHER:IIIB'or'OTHER:IIIC']">
+<xsl:template match="aixm:Navaid//aixm:signalPerformance[text()='OTHER:IIIA' or text()='OTHER:IIIB' or text()='OTHER:IIIC']">
 	<xsl:copy>
 		<xsl:value-of select="substring-after(.,'OTHER:')"/>
 	</xsl:copy>
