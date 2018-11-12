@@ -155,7 +155,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 <xsl:template match="aixm:FASDataBlock">
 	<xsl:choose>
-		<xsl:when test="'aixm:routeIndicator[@nilReason]' or 'aixm:referencePathIdentifier[@nilReason]' or 'aixm:codeICAO[@nilReason'">
+		<xsl:when test="aixm:routeIndicator[@nilReason] or aixm:referencePathIdentifier[@nilReason] or aixm:codeICAO[@nilReason]">
 			<xsl:copy>
 				<xsl:copy-of select="@gml:id" />
 				<xsl:copy-of select="aixm:horizontalAlarmLimit" use-when="exists('aixm:horizontalAlarmLimit')" />
