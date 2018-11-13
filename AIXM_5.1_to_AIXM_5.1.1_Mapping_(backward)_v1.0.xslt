@@ -75,7 +75,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<!--script implementing change proposal AIXM-146 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-146)-->
 <xsl:template match="aixm:StandardLevelColumnTimeSlice[aixm:unitOfMeasurement]">
 	<xsl:choose>
-		<xsl:when test="aixm:unitOfMeasurement[@nilReason[text()='inapplicable' or text()='missing' or text()='template' or text()='unknown' or text()='withheld']]">
+		<xsl:when test="aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 			<xsl:copy >
 				<xsl:copy-of select="@gml:id" />
 				<xsl:copy-of select="gml:validTime" use-when="exists('gml:validTime')" />
@@ -115,7 +115,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 <xsl:template match="aixm:MarkingBuoyTimeSlice[aixm:designator]">
 	<xsl:choose>
-		<xsl:when test="aixm:designator[@nilReason[text()='inapplicable' or text()='missing' or text()='template' or text()='unknown' or text()='withheld']]">
+		<xsl:when test="aixm:designator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 			<xsl:copy >
 				<xsl:copy-of select="@gml:id" />
 				<xsl:copy-of select="gml:validTime" use-when="exists('gml:validTime')" />
@@ -155,7 +155,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 <xsl:template match="aixm:FASDataBlock">
 	<xsl:choose>
-		<xsl:when test="'aixm:routeIndicator[@nilReason]' or 'aixm:referencePathIdentifier[@nilReason]' or 'aixm:codeICAO[@nilReason'">
+		<xsl:when test="aixm:routeIndicator[@nilReason] or aixm:referencePathIdentifier[@nilReason] or aixm:codeICAO[@nilReason]">
 			<xsl:copy>
 				<xsl:copy-of select="@gml:id" />
 				<xsl:copy-of select="aixm:horizontalAlarmLimit" use-when="exists('aixm:horizontalAlarmLimit')" />
@@ -171,7 +171,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<xsl:copy-of select="aixm:referencePathIdentifier" use-when="exists('aixm:referencePathIdentifier')" />
 				<xsl:copy-of select="aixm:codeICAO" use-when="exists('aixm:codeICAO')" />
 				<xsl:copy-of select="aixm:annotation" use-when="exists('aixm:annotation')" />
-				<xsl:if test="aixm:routeIndicator[@nilReason[text()='inapplicable' or text()='missing' or text()='template' or text()='unknown' or text()='withheld']]">
+				<xsl:if test="aixm:routeIndicator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
 							<xsl:attribute name="gml:id" select="concat('g', generate-id())" />
@@ -188,7 +188,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						</xsl:element>
 					</xsl:element>
 				</xsl:if>
-				<xsl:if test="aixm:referencePathIdentifier[@nilReason[text()='inapplicable' or text()='missing' or text()='template' or text()='unknown' or text()='withheld']]">
+				<xsl:if test="aixm:referencePathIdentifier[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
 							<xsl:attribute name="gml:id" select="concat('a',generate-id())" />
@@ -205,7 +205,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						</xsl:element>
 					</xsl:element>
 				</xsl:if>
-				<xsl:if test="aixm:codeICAO[@nilReason[text()='inapplicable' or text()='missing' or text()='template' or text()='unknown' or text()='withheld']]">
+				<xsl:if test="aixm:codeICAO[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
 						<xsl:attribute name="gml:id" select="concat('d',generate-id())" />
@@ -232,7 +232,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147)-->
-<xsl:template match="aixm:Navaid//aixm:signalPerformance[text()='IIIA' or text()='IIIB' or text()='IIIC']">
+<xsl:template match="aixm:Navaid//aixm:signalPerformance[text()=('IIIA','IIIB','IIIC')]">
 	<xsl:copy>
 		<xsl:value-of select="concat('OTHER:',.)"/>
 	</xsl:copy>
