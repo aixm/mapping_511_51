@@ -70,42 +70,23 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</xsl:element>
 </xsl:template>
 
-<xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS ']">
+<xsl:template match="
+		src_aixm:AircraftStand        //src_aixm:visualDockingSystem[text()=('AGNIS ','AGNIS_STOP ')]|
+		src_aixm:VerticalStructurePart/ src_aixm:constructionStatus [text()= 'IN_DEMOLITION '       ]">
 	<xsl:element name="aixm:{local-name()}">
-		<xsl:text>AGNIS</xsl:text>
-	</xsl:element>
-</xsl:template>
-
-<xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS_STOP ']">
-	<xsl:element name="aixm:{local-name()}">
-		<xsl:text>AGNIS_STOP</xsl:text>
-	</xsl:element>
-</xsl:template>
-
-<xsl:template match="src_aixm:VerticalStructurePart/src_aixm:constructionStatus[text()='IN_DEMOLITION ']">
-	<xsl:element name="aixm:{local-name()}">
-		<xsl:text>IN_DEMOLITION</xsl:text>
+		<xsl:value-of select="translate(text(),' ','')"/>
 	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-143 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-143 )-->
-<xsl:template match="src_aixm:TerminalSegmentPoint//src_aixm:role[text()='OTHER:LTP']">
-	<xsl:element name="aixm:{local-name()}">
-		<xsl:text>LTP</xsl:text>
-	</xsl:element>
-</xsl:template>
-
 	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
-<xsl:template match="src_aixm:Navaid//src_aixm:signalPerformance[text()=('OTHER:IIIA','OTHER:IIIB','OTHER:IIIC')]">
-	<xsl:element name="aixm:{local-name()}">
-		<xsl:value-of select="substring-after(.,'OTHER:')"/>
-	</xsl:element>
-</xsl:template>
-
 	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150 )-->
-<xsl:template match="src_aixm:AircraftCharacteristic//src_aixm:engine[text()='OTHER:ELECTRIC']">
+<xsl:template match="
+		src_aixm:TerminalSegmentPoint  //src_aixm:role             [text()= 'OTHER:LTP'                            ]|
+		src_aixm:Navaid                //src_aixm:signalPerformance[text()=('OTHER:IIIA','OTHER:IIIB','OTHER:IIIC')]|
+		src_aixm:AircraftCharacteristic//src_aixm:engine           [text()= 'OTHER:ELECTRIC'                       ]">
 	<xsl:element name="aixm:{local-name()}">
-		<xsl:value-of select="substring-after(.,'OTHER:')"/>
+		<xsl:value-of select="substring-after(text(),'OTHER:')"/>
 	</xsl:element>
 </xsl:template>
 
