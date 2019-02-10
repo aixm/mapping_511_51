@@ -48,41 +48,41 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 	<!-- script implementing change proposal AIXM-139 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-139 )-->
 <xsl:template match="src_aixm:RulesProcedures//src_aixm:title[text()='HOLDING_APPROACH_DEPARTURE_PROCEDURES']">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:text>HOLDING_ APPROACH_DEPARTURE_PROCEDURES</xsl:text>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 <xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS']">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:text>AGNIS </xsl:text>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 <xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS_STOP']">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:text>AGNIS_STOP </xsl:text>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 <xsl:template match="src_aixm:VerticalStructurePart/src_aixm:constructionStatus[text()='IN_DEMOLITION']">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:text>IN_DEMOLITION </xsl:text>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-143 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-143 )-->
 <xsl:template match="src_aixm:TerminalSegmentPoint//src_aixm:role[text()='LTP']">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:text>OTHER:LTP</xsl:text>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-146 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-146 )-->
 <xsl:template match="src_aixm:StandardLevelColumnTimeSlice[src_aixm:unitOfMeasurement]">
 	<xsl:choose>
 		<xsl:when test="src_aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
-			<xsl:copy>
+			<xsl:element name="aixm:{local-name()}">
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="gml:validTime"/>
 				<xsl:apply-templates select="src_aixm:interpretation"/>
@@ -111,7 +111,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</xsl:element>
 				<xsl:apply-templates select="src_aixm:annotation"/>
 				<xsl:apply-templates select="src_aixm:extension"/>
-			</xsl:copy>
+			</xsl:element>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:apply-templates select="."/>
@@ -122,7 +122,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 <xsl:template match="src_aixm:MarkingBuoyTimeSlice[src_aixm:designator]">
 	<xsl:choose>
 		<xsl:when test="src_aixm:designator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
-			<xsl:copy>
+			<xsl:element name="aixm:{local-name()}">
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="gml:validTime"/>
 				<xsl:apply-templates select="src_aixm:interpretation"/>
@@ -151,7 +151,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</xsl:element>
 				<xsl:apply-templates select="src_aixm:annotation"/>
 				<xsl:apply-templates select="src_aixm:extension"/>
-			</xsl:copy>
+			</xsl:element>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:apply-templates select="."/>
@@ -162,7 +162,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 <xsl:template match="src_aixm:FASDataBlock">
 	<xsl:choose>
 		<xsl:when test="src_aixm:routeIndicator[@nilReason] or src_aixm:referencePathIdentifier[@nilReason] or src_aixm:codeICAO[@nilReason]">
-			<xsl:copy>
+			<xsl:element name="aixm:{local-name()}">
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="src_aixm:horizontalAlarmLimit"/>
 				<xsl:apply-templates select="src_aixm:verticalAlarmLimit"/>
@@ -229,7 +229,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					</xsl:element>
 				</xsl:if>
 				<xsl:apply-templates select="src_aixm:extension"/>
-			</xsl:copy>
+			</xsl:element>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:apply-templates select="."/>
@@ -239,23 +239,23 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
 <xsl:template match="src_aixm:Navaid//src_aixm:signalPerformance[text()=('IIIA','IIIB','IIIC')]">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:value-of select="concat('OTHER:',.)"/>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150 )-->
 <xsl:template match="src_aixm:AircraftCharacteristic//src_aixm:engine[text()='ELECTRIC']">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:value-of select="concat('OTHER:',.)"/>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-158 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-158 )-->
 <xsl:template match="src_aixm:StandardLevelTable//src_aixm:name[text()='VFR_RVSM']">
-	<xsl:copy>
+	<xsl:element name="aixm:{local-name()}">
 		<xsl:text>VFR_RVMS</xsl:text>
-	</xsl:copy>
+	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-164 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-164 )-->
@@ -266,7 +266,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<xsl:apply-templates select="."/>
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:copy>
+			<xsl:element name="aixm:{local-name()}">
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="src_aixm:purpose"/>
 				<xsl:element name="aixm:translatedNote">
@@ -278,7 +278,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					</xsl:element>
 				</xsl:element>
 				<xsl:apply-templates select="src_aixm:translatedNote"/>
-			</xsl:copy>
+			</xsl:element>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
