@@ -99,6 +99,27 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</xsl:element>
 </xsl:template>
 
+	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
+<xsl:template match="src_aixm:Navaid//src_aixm:signalPerformance[text()=('IIIA','IIIB','IIIC')]">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:value-of select="concat('OTHER:',.)"/>
+	</xsl:element>
+</xsl:template>
+
+	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150 )-->
+<xsl:template match="src_aixm:AircraftCharacteristic//src_aixm:engine[text()='ELECTRIC']">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:value-of select="concat('OTHER:',.)"/>
+	</xsl:element>
+</xsl:template>
+
+	<!--script implementing change proposal AIXM-158 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-158 )-->
+<xsl:template match="src_aixm:StandardLevelTable//src_aixm:name[text()='VFR_RVSM']">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:text>VFR_RVMS</xsl:text>
+	</xsl:element>
+</xsl:template>
+
 	<!--script implementing change proposal AIXM-146 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-146 )-->
 <xsl:template match="src_aixm:StandardLevelColumnTimeSlice[src_aixm:unitOfMeasurement]">
 	<xsl:choose>
@@ -256,27 +277,6 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<xsl:apply-templates select="."/>
 		</xsl:otherwise>
 	</xsl:choose>
-</xsl:template>
-
-	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
-<xsl:template match="src_aixm:Navaid//src_aixm:signalPerformance[text()=('IIIA','IIIB','IIIC')]">
-	<xsl:element name="aixm:{local-name()}">
-		<xsl:value-of select="concat('OTHER:',.)"/>
-	</xsl:element>
-</xsl:template>
-
-	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150 )-->
-<xsl:template match="src_aixm:AircraftCharacteristic//src_aixm:engine[text()='ELECTRIC']">
-	<xsl:element name="aixm:{local-name()}">
-		<xsl:value-of select="concat('OTHER:',.)"/>
-	</xsl:element>
-</xsl:template>
-
-	<!--script implementing change proposal AIXM-158 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-158 )-->
-<xsl:template match="src_aixm:StandardLevelTable//src_aixm:name[text()='VFR_RVSM']">
-	<xsl:element name="aixm:{local-name()}">
-		<xsl:text>VFR_RVMS</xsl:text>
-	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-164 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-164 )-->
