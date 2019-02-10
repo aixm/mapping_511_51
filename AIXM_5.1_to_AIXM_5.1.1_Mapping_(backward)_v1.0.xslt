@@ -40,7 +40,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</xsl:copy>
 </xsl:template>
 
-	<!-- script implementing change proposal AIXM-139 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-139)-->
+	<!-- script implementing change proposal AIXM-139 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-139 )-->
 <xsl:template match="aixm:RulesProcedures//aixm:title[text()='HOLDING_APPROACH_DEPARTURE_PROCEDURES']">
 	<xsl:copy>
 		<xsl:text>HOLDING_ APPROACH_DEPARTURE_PROCEDURES</xsl:text>
@@ -65,14 +65,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</xsl:copy>
 </xsl:template>
 
-	<!--script implementing change proposal AIXM-143 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-143)-->
+	<!--script implementing change proposal AIXM-143 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-143 )-->
 <xsl:template match="aixm:TerminalSegmentPoint//aixm:role[text()='LTP']">
 	<xsl:copy>
 		<xsl:text>OTHER:LTP</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-	<!--script implementing change proposal AIXM-146 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-146)-->
+	<!--script implementing change proposal AIXM-146 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-146 )-->
 <xsl:template match="aixm:StandardLevelColumnTimeSlice[aixm:unitOfMeasurement]">
 	<xsl:choose>
 		<xsl:when test="aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
@@ -231,28 +231,28 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</xsl:choose>
 </xsl:template>
 
-	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147)-->
+	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
 <xsl:template match="aixm:Navaid//aixm:signalPerformance[text()=('IIIA','IIIB','IIIC')]">
 	<xsl:copy>
 		<xsl:value-of select="concat('OTHER:',.)"/>
 	</xsl:copy>
 </xsl:template>
 
-	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150)-->
+	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150 )-->
 <xsl:template match="aixm:AircraftCharacteristic//aixm:engine[text()='ELECTRIC']">
 	<xsl:copy>
 		<xsl:value-of select="concat('OTHER:',.)"/>
 	</xsl:copy>
 </xsl:template>
 
-	<!--script implementing change proposal AIXM-158 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-158)-->
+	<!--script implementing change proposal AIXM-158 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-158 )-->
 <xsl:template match="aixm:StandardLevelTable//aixm:name[text()='VFR_RVSM']">
 	<xsl:copy>
 		<xsl:text>VFR_RVMS</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-	<!--script implementing change proposal AIXM-164 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-164)-->
+	<!--script implementing change proposal AIXM-164 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-164 )-->
 	<!--fn:matches was used to identify the required pattern for Note.propertyName-->
 <xsl:template match="aixm:Note[aixm:propertyName]">
 	<xsl:choose>
