@@ -33,7 +33,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<!--identity transformation to copy the unchanged nodes-->
 <xsl:template match="@* | node()">
 	<xsl:copy>
-		<xsl:apply-templates select="@* | node()" />
+		<xsl:apply-templates select="@* | node()"/>
 	</xsl:copy>
 </xsl:template>
 
