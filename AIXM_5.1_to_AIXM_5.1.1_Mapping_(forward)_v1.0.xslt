@@ -21,7 +21,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		provided by the Open Source Initiative:
 		http://www.opensource.org/licenses/bsd-license.php
 		==========================================
-		Technical note: the scripts have been tested using Saxon Home Edition 9.6.0.5. The transition from Xalan to Saxon was a prerequisite for using a new function implemented with XSLT 2.0 (i.e fn:matches) 
+		Technical note: the scripts have been tested using Saxon Home Edition 9.6.0.5. The transition from Xalan to Saxon was a prerequisite for using a new function implemented with XSLT 2.0 (i.e fn:matches)
 		needed for the implementation of the change proposals. For more details and download links please use the following link: http://saxon.sourceforge.net/ .
 		==========================================
 	-->
@@ -29,7 +29,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:aixm="http://www.aixm.aero/schema/5.1">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
-	
+
 	<!--identity transformation to copy the unchanged nodes-->
 <xsl:template match="@* | node()">
 	<xsl:copy>

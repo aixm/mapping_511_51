@@ -22,9 +22,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		http://www.opensource.org/licenses/bsd-license.php
 		==========================================
 		Technical note:
-			* The scripts have been tested using Saxon Home Edition 9.6.0.5. The transition from Xalan to Saxon was a prerequisite for using a new function implemented with XSLT 2.0 (i.e fn:matches) 
+			* The scripts have been tested using Saxon Home Edition 9.6.0.5. The transition from Xalan to Saxon was a prerequisite for using a new function implemented with XSLT 2.0 (i.e fn:matches)
 			needed for the implementation of the change proposals. For more details and download links please the following link: http://saxon.sourceforge.net/ .
-			* When the script is run using a Java extension the following warning will be prompted: The child axis starting at an attribute node will never select anything. 
+			* When the script is run using a Java extension the following warning will be prompted: The child axis starting at an attribute node will never select anything.
 			This warning is a bug from Saxon which doesn't affect the output.
 		==========================================
 	-->
@@ -208,16 +208,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<xsl:if test="aixm:codeICAO[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
-						<xsl:attribute name="gml:id" select="concat('d',generate-id())" />
+							<xsl:attribute name="gml:id" select="concat('d',generate-id())" />
 							<xsl:element name="aixm:propertyName">codeICAO</xsl:element>
-								<xsl:element name="aixm:purpose">REMARK</xsl:element>
-									<xsl:element name="aixm:translatedNote">
-										<xsl:element name="aixm:LinguisticNote">
-										<xsl:attribute name="gml:id" select="concat('d',generate-id(),'10')" />
-											<xsl:element name="aixm:note">
-												<xsl:value-of select="aixm:codeICAO/@nilReason"/>
-											</xsl:element>
-										</xsl:element>
+							<xsl:element name="aixm:purpose">REMARK</xsl:element>
+							<xsl:element name="aixm:translatedNote">
+								<xsl:element name="aixm:LinguisticNote">
+									<xsl:attribute name="gml:id" select="concat('d',generate-id(),'10')" />
+									<xsl:element name="aixm:note">
+										<xsl:value-of select="aixm:codeICAO/@nilReason"/>
+									</xsl:element>
+								</xsl:element>
 							</xsl:element>
 						</xsl:element>
 					</xsl:element>
@@ -263,14 +263,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 			<xsl:copy>
 				<xsl:copy-of select="@gml:id" />
 				<xsl:copy-of select="aixm:purpose" use-when="exists('aixm:purpose')" />
-					<xsl:element name="aixm:translatedNote">
-						<xsl:element name="aixm:LinguisticNote">
-							<xsl:attribute name="gml:id" select="generate-id()" />
-								<xsl:element name="aixm:note">
-									<xsl:text>value-of Note.propertyName: </xsl:text><xsl:value-of select="aixm:propertyName"/>
-								</xsl:element>
+				<xsl:element name="aixm:translatedNote">
+					<xsl:element name="aixm:LinguisticNote">
+						<xsl:attribute name="gml:id" select="generate-id()" />
+						<xsl:element name="aixm:note">
+							<xsl:text>value-of Note.propertyName: </xsl:text><xsl:value-of select="aixm:propertyName"/>
 						</xsl:element>
 					</xsl:element>
+				</xsl:element>
 				<xsl:copy-of select="aixm:translatedNote" use-when="exists('aixm:translatedNote')" />
 			</xsl:copy>
 		</xsl:otherwise>
