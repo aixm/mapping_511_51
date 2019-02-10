@@ -34,9 +34,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
 	<!--identity transformation to copy the unchanged nodes-->
-<xsl:template match="@* | node()">
+<xsl:template match="@*|node()">
 	<xsl:copy>
-		<xsl:apply-templates select="@* | node()"/>
+		<xsl:apply-templates select="@*|node()"/>
 	</xsl:copy>
 </xsl:template>
 
@@ -174,12 +174,12 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				<xsl:if test="aixm:routeIndicator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
-							<xsl:attribute name="gml:id" select="concat('g', generate-id())"/>
+							<xsl:attribute name="gml:id" select="concat('g',generate-id())"/>
 							<xsl:element name="aixm:propertyName">routeIndicator</xsl:element>
 							<xsl:element name="aixm:purpose">REMARK</xsl:element>
 							<xsl:element name="aixm:translatedNote">
 								<xsl:element name="aixm:LinguisticNote">
-									<xsl:attribute name="gml:id" select="concat('g', generate-id(),'10')"/>
+									<xsl:attribute name="gml:id" select="concat('g',generate-id(),'10')"/>
 									<xsl:element name="aixm:note">
 										<xsl:value-of select="aixm:routeIndicator/@nilReason"/>
 									</xsl:element>
