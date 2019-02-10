@@ -34,6 +34,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                xmlns:src_aixm="http://www.aixm.aero/schema/5.1"
                 xmlns:aixm="http://www.aixm.aero/schema/5.1"
                 xmlns:gml="http://www.opengis.net/gml/3.2">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
@@ -46,53 +47,53 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 </xsl:template>
 
 	<!-- script implementing change proposal AIXM-139 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-139 )-->
-<xsl:template match="aixm:RulesProcedures//aixm:title[text()='HOLDING_APPROACH_DEPARTURE_PROCEDURES']">
+<xsl:template match="src_aixm:RulesProcedures//src_aixm:title[text()='HOLDING_APPROACH_DEPARTURE_PROCEDURES']">
 	<xsl:copy>
 		<xsl:text>HOLDING_ APPROACH_DEPARTURE_PROCEDURES</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-<xsl:template match="aixm:AircraftStand//aixm:visualDockingSystem[text()='AGNIS']">
+<xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS']">
 	<xsl:copy>
 		<xsl:text>AGNIS </xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-<xsl:template match="aixm:AircraftStand//aixm:visualDockingSystem[text()='AGNIS_STOP']">
+<xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS_STOP']">
 	<xsl:copy>
 		<xsl:text>AGNIS_STOP </xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-<xsl:template match="aixm:VerticalStructurePart/aixm:constructionStatus[text()='IN_DEMOLITION']">
+<xsl:template match="src_aixm:VerticalStructurePart/src_aixm:constructionStatus[text()='IN_DEMOLITION']">
 	<xsl:copy>
 		<xsl:text>IN_DEMOLITION </xsl:text>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-143 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-143 )-->
-<xsl:template match="aixm:TerminalSegmentPoint//aixm:role[text()='LTP']">
+<xsl:template match="src_aixm:TerminalSegmentPoint//src_aixm:role[text()='LTP']">
 	<xsl:copy>
 		<xsl:text>OTHER:LTP</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-146 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-146 )-->
-<xsl:template match="aixm:StandardLevelColumnTimeSlice[aixm:unitOfMeasurement]">
+<xsl:template match="src_aixm:StandardLevelColumnTimeSlice[src_aixm:unitOfMeasurement]">
 	<xsl:choose>
-		<xsl:when test="aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
+		<xsl:when test="src_aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 			<xsl:copy>
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="gml:validTime"/>
-				<xsl:apply-templates select="aixm:interpretation"/>
-				<xsl:apply-templates select="aixm:sequenceNumber"/>
-				<xsl:apply-templates select="aixm:correctionNumber"/>
-				<xsl:apply-templates select="aixm:featureLifetime"/>
-				<xsl:apply-templates select="aixm:series"/>
-				<xsl:apply-templates select="aixm:unitOfMeasurement"/>
-				<xsl:apply-templates select="aixm:separation"/>
-				<xsl:apply-templates select="aixm:level"/>
-				<xsl:apply-templates select="aixm:levelTable"/>
+				<xsl:apply-templates select="src_aixm:interpretation"/>
+				<xsl:apply-templates select="src_aixm:sequenceNumber"/>
+				<xsl:apply-templates select="src_aixm:correctionNumber"/>
+				<xsl:apply-templates select="src_aixm:featureLifetime"/>
+				<xsl:apply-templates select="src_aixm:series"/>
+				<xsl:apply-templates select="src_aixm:unitOfMeasurement"/>
+				<xsl:apply-templates select="src_aixm:separation"/>
+				<xsl:apply-templates select="src_aixm:level"/>
+				<xsl:apply-templates select="src_aixm:levelTable"/>
 				<xsl:element name="aixm:annotation">
 					<xsl:element name="aixm:Note">
 						<xsl:attribute name="gml:id" select="generate-id()"/>
@@ -102,14 +103,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 							<xsl:element name="aixm:LinguisticNote">
 								<xsl:attribute name="gml:id" select="concat(generate-id(),'10')"/>
 								<xsl:element name="aixm:note">
-									<xsl:value-of select="aixm:unitOfMeasurement/@nilReason"/>
+									<xsl:value-of select="src_aixm:unitOfMeasurement/@nilReason"/>
 								</xsl:element>
 							</xsl:element>
 						</xsl:element>
 					</xsl:element>
 				</xsl:element>
-				<xsl:apply-templates select="aixm:annotation"/>
-				<xsl:apply-templates select="aixm:extension"/>
+				<xsl:apply-templates select="src_aixm:annotation"/>
+				<xsl:apply-templates select="src_aixm:extension"/>
 			</xsl:copy>
 		</xsl:when>
 		<xsl:otherwise>
@@ -118,21 +119,21 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="aixm:MarkingBuoyTimeSlice[aixm:designator]">
+<xsl:template match="src_aixm:MarkingBuoyTimeSlice[src_aixm:designator]">
 	<xsl:choose>
-		<xsl:when test="aixm:designator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
+		<xsl:when test="src_aixm:designator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 			<xsl:copy>
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="gml:validTime"/>
-				<xsl:apply-templates select="aixm:interpretation"/>
-				<xsl:apply-templates select="aixm:sequenceNumber"/>
-				<xsl:apply-templates select="aixm:correctionNumber"/>
-				<xsl:apply-templates select="aixm:featureLifetime"/>
-				<xsl:apply-templates select="aixm:designator"/>
-				<xsl:apply-templates select="aixm:type"/>
-				<xsl:apply-templates select="aixm:colour"/>
-				<xsl:apply-templates select="aixm:theSeaplaneLandingArea"/>
-				<xsl:apply-templates select="aixm:location"/>
+				<xsl:apply-templates select="src_aixm:interpretation"/>
+				<xsl:apply-templates select="src_aixm:sequenceNumber"/>
+				<xsl:apply-templates select="src_aixm:correctionNumber"/>
+				<xsl:apply-templates select="src_aixm:featureLifetime"/>
+				<xsl:apply-templates select="src_aixm:designator"/>
+				<xsl:apply-templates select="src_aixm:type"/>
+				<xsl:apply-templates select="src_aixm:colour"/>
+				<xsl:apply-templates select="src_aixm:theSeaplaneLandingArea"/>
+				<xsl:apply-templates select="src_aixm:location"/>
 				<xsl:element name="aixm:annotation">
 					<xsl:element name="aixm:Note">
 						<xsl:attribute name="gml:id" select="generate-id()"/>
@@ -142,14 +143,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 							<xsl:element name="aixm:LinguisticNote">
 								<xsl:attribute name="gml:id" select="concat(generate-id(),'10')"/>
 								<xsl:element name="aixm:note">
-									<xsl:value-of select="aixm:designator/@nilReason"/>
+									<xsl:value-of select="src_aixm:designator/@nilReason"/>
 								</xsl:element>
 							</xsl:element>
 						</xsl:element>
 					</xsl:element>
 				</xsl:element>
-				<xsl:apply-templates select="aixm:annotation"/>
-				<xsl:apply-templates select="aixm:extension"/>
+				<xsl:apply-templates select="src_aixm:annotation"/>
+				<xsl:apply-templates select="src_aixm:extension"/>
 			</xsl:copy>
 		</xsl:when>
 		<xsl:otherwise>
@@ -158,25 +159,25 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	</xsl:choose>
 </xsl:template>
 
-<xsl:template match="aixm:FASDataBlock">
+<xsl:template match="src_aixm:FASDataBlock">
 	<xsl:choose>
-		<xsl:when test="aixm:routeIndicator[@nilReason] or aixm:referencePathIdentifier[@nilReason] or aixm:codeICAO[@nilReason]">
+		<xsl:when test="src_aixm:routeIndicator[@nilReason] or src_aixm:referencePathIdentifier[@nilReason] or src_aixm:codeICAO[@nilReason]">
 			<xsl:copy>
 				<xsl:apply-templates select="@gml:id"/>
-				<xsl:apply-templates select="aixm:horizontalAlarmLimit"/>
-				<xsl:apply-templates select="aixm:verticalAlarmLimit"/>
-				<xsl:apply-templates select="aixm:thresholdCourseWidth"/>
-				<xsl:apply-templates select="aixm:lengthOffset"/>
-				<xsl:apply-templates select="aixm:CRCRemainder"/>
-				<xsl:apply-templates select="aixm:operationType"/>
-				<xsl:apply-templates select="aixm:serviceProviderSBAS"/>
-				<xsl:apply-templates select="aixm:approachPerformanceDesignator"/>
-				<xsl:apply-templates select="aixm:routeIndicator"/>
-				<xsl:apply-templates select="aixm:referencePathDataSelector"/>
-				<xsl:apply-templates select="aixm:referencePathIdentifier"/>
-				<xsl:apply-templates select="aixm:codeICAO"/>
-				<xsl:apply-templates select="aixm:annotation"/>
-				<xsl:if test="aixm:routeIndicator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
+				<xsl:apply-templates select="src_aixm:horizontalAlarmLimit"/>
+				<xsl:apply-templates select="src_aixm:verticalAlarmLimit"/>
+				<xsl:apply-templates select="src_aixm:thresholdCourseWidth"/>
+				<xsl:apply-templates select="src_aixm:lengthOffset"/>
+				<xsl:apply-templates select="src_aixm:CRCRemainder"/>
+				<xsl:apply-templates select="src_aixm:operationType"/>
+				<xsl:apply-templates select="src_aixm:serviceProviderSBAS"/>
+				<xsl:apply-templates select="src_aixm:approachPerformanceDesignator"/>
+				<xsl:apply-templates select="src_aixm:routeIndicator"/>
+				<xsl:apply-templates select="src_aixm:referencePathDataSelector"/>
+				<xsl:apply-templates select="src_aixm:referencePathIdentifier"/>
+				<xsl:apply-templates select="src_aixm:codeICAO"/>
+				<xsl:apply-templates select="src_aixm:annotation"/>
+				<xsl:if test="src_aixm:routeIndicator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
 							<xsl:attribute name="gml:id" select="concat('g',generate-id())"/>
@@ -186,14 +187,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 								<xsl:element name="aixm:LinguisticNote">
 									<xsl:attribute name="gml:id" select="concat('g',generate-id(),'10')"/>
 									<xsl:element name="aixm:note">
-										<xsl:value-of select="aixm:routeIndicator/@nilReason"/>
+										<xsl:value-of select="src_aixm:routeIndicator/@nilReason"/>
 									</xsl:element>
 								</xsl:element>
 							</xsl:element>
 						</xsl:element>
 					</xsl:element>
 				</xsl:if>
-				<xsl:if test="aixm:referencePathIdentifier[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
+				<xsl:if test="src_aixm:referencePathIdentifier[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
 							<xsl:attribute name="gml:id" select="concat('a',generate-id())"/>
@@ -203,14 +204,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 								<xsl:element name="aixm:LinguisticNote">
 									<xsl:attribute name="gml:id" select="concat('a',generate-id(),'10')"/>
 									<xsl:element name="aixm:note">
-										<xsl:value-of select="aixm:referencePathIdentifier/@nilReason"/>
+										<xsl:value-of select="src_aixm:referencePathIdentifier/@nilReason"/>
 									</xsl:element>
 								</xsl:element>
 							</xsl:element>
 						</xsl:element>
 					</xsl:element>
 				</xsl:if>
-				<xsl:if test="aixm:codeICAO[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
+				<xsl:if test="src_aixm:codeICAO[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
 							<xsl:attribute name="gml:id" select="concat('d',generate-id())"/>
@@ -220,14 +221,14 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 								<xsl:element name="aixm:LinguisticNote">
 									<xsl:attribute name="gml:id" select="concat('d',generate-id(),'10')"/>
 									<xsl:element name="aixm:note">
-										<xsl:value-of select="aixm:codeICAO/@nilReason"/>
+										<xsl:value-of select="src_aixm:codeICAO/@nilReason"/>
 									</xsl:element>
 								</xsl:element>
 							</xsl:element>
 						</xsl:element>
 					</xsl:element>
 				</xsl:if>
-				<xsl:apply-templates select="aixm:extension"/>
+				<xsl:apply-templates select="src_aixm:extension"/>
 			</xsl:copy>
 		</xsl:when>
 		<xsl:otherwise>
@@ -237,21 +238,21 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
-<xsl:template match="aixm:Navaid//aixm:signalPerformance[text()=('IIIA','IIIB','IIIC')]">
+<xsl:template match="src_aixm:Navaid//src_aixm:signalPerformance[text()=('IIIA','IIIB','IIIC')]">
 	<xsl:copy>
 		<xsl:value-of select="concat('OTHER:',.)"/>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150 )-->
-<xsl:template match="aixm:AircraftCharacteristic//aixm:engine[text()='ELECTRIC']">
+<xsl:template match="src_aixm:AircraftCharacteristic//src_aixm:engine[text()='ELECTRIC']">
 	<xsl:copy>
 		<xsl:value-of select="concat('OTHER:',.)"/>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-158 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-158 )-->
-<xsl:template match="aixm:StandardLevelTable//aixm:name[text()='VFR_RVSM']">
+<xsl:template match="src_aixm:StandardLevelTable//src_aixm:name[text()='VFR_RVSM']">
 	<xsl:copy>
 		<xsl:text>VFR_RVMS</xsl:text>
 	</xsl:copy>
@@ -259,24 +260,24 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 	<!--script implementing change proposal AIXM-164 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-164 )-->
 	<!--fn:matches was used to identify the required pattern for Note.propertyName-->
-<xsl:template match="aixm:Note[aixm:propertyName]">
+<xsl:template match="src_aixm:Note[src_aixm:propertyName]">
 	<xsl:choose>
-		<xsl:when test="aixm:propertyName[matches(text(),'^[a-z][A-Za-z]*$')]">
+		<xsl:when test="src_aixm:propertyName[matches(text(),'^[a-z][A-Za-z]*$')]">
 			<xsl:apply-templates select="."/>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:copy>
 				<xsl:apply-templates select="@gml:id"/>
-				<xsl:apply-templates select="aixm:purpose"/>
+				<xsl:apply-templates select="src_aixm:purpose"/>
 				<xsl:element name="aixm:translatedNote">
 					<xsl:element name="aixm:LinguisticNote">
 						<xsl:attribute name="gml:id" select="generate-id()"/>
 						<xsl:element name="aixm:note">
-							<xsl:text>value-of Note.propertyName: </xsl:text><xsl:value-of select="aixm:propertyName"/>
+							<xsl:text>value-of Note.propertyName: </xsl:text><xsl:value-of select="src_aixm:propertyName"/>
 						</xsl:element>
 					</xsl:element>
 				</xsl:element>
-				<xsl:apply-templates select="aixm:translatedNote"/>
+				<xsl:apply-templates select="src_aixm:translatedNote"/>
 			</xsl:copy>
 		</xsl:otherwise>
 	</xsl:choose>

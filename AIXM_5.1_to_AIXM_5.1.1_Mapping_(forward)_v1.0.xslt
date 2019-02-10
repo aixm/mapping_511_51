@@ -31,6 +31,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                xmlns:src_aixm="http://www.aixm.aero/schema/5.1"
                 xmlns:aixm="http://www.aixm.aero/schema/5.1">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
@@ -42,53 +43,53 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 </xsl:template>
 
 	<!-- script implementing change proposal AIXM-139 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-139 )-->
-<xsl:template match="aixm:RulesProcedures//aixm:title[text()='HOLDING_ APPROACH_DEPARTURE_PROCEDURES']">
+<xsl:template match="src_aixm:RulesProcedures//src_aixm:title[text()='HOLDING_ APPROACH_DEPARTURE_PROCEDURES']">
 	<xsl:copy>
 		<xsl:text>HOLDING_APPROACH_DEPARTURE_PROCEDURES</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-<xsl:template match="aixm:AircraftStand//aixm:visualDockingSystem[text()='AGNIS ']">
+<xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS ']">
 	<xsl:copy>
 		<xsl:text>AGNIS</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-<xsl:template match="aixm:AircraftStand//aixm:visualDockingSystem[text()='AGNIS_STOP ']">
+<xsl:template match="src_aixm:AircraftStand//src_aixm:visualDockingSystem[text()='AGNIS_STOP ']">
 	<xsl:copy>
 		<xsl:text>AGNIS_STOP</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
-<xsl:template match="aixm:VerticalStructurePart/aixm:constructionStatus[text()='IN_DEMOLITION ']">
+<xsl:template match="src_aixm:VerticalStructurePart/src_aixm:constructionStatus[text()='IN_DEMOLITION ']">
 	<xsl:copy>
 		<xsl:text>IN_DEMOLITION</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-143 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-143 )-->
-<xsl:template match="aixm:TerminalSegmentPoint//aixm:role[text()='OTHER:LTP']">
+<xsl:template match="src_aixm:TerminalSegmentPoint//src_aixm:role[text()='OTHER:LTP']">
 	<xsl:copy>
 		<xsl:text>LTP</xsl:text>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-147 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-147 )-->
-<xsl:template match="aixm:Navaid//aixm:signalPerformance[text()=('OTHER:IIIA','OTHER:IIIB','OTHER:IIIC')]">
+<xsl:template match="src_aixm:Navaid//src_aixm:signalPerformance[text()=('OTHER:IIIA','OTHER:IIIB','OTHER:IIIC')]">
 	<xsl:copy>
 		<xsl:value-of select="substring-after(.,'OTHER:')"/>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-150 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-150 )-->
-<xsl:template match="aixm:AircraftCharacteristic//aixm:engine[text()='OTHER:ELECTRIC']">
+<xsl:template match="src_aixm:AircraftCharacteristic//src_aixm:engine[text()='OTHER:ELECTRIC']">
 	<xsl:copy>
 		<xsl:value-of select="substring-after(.,'OTHER:')"/>
 	</xsl:copy>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-158 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-158 )-->
-<xsl:template match="aixm:StandardLevelTable//aixm:name[text()='VFR_RVMS']">
+<xsl:template match="src_aixm:StandardLevelTable//src_aixm:name[text()='VFR_RVMS']">
 	<xsl:copy>
 		<xsl:text>VFR_RVSM</xsl:text>
 	</xsl:copy>
