@@ -27,7 +27,11 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 	-->
 <!-- Component: XSLT scripts: forward mapping (AIXM 5.1 to AIXM 5.1.1) -->
 
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:aixm="http://www.aixm.aero/schema/5.1">
+<xsl:stylesheet version="2.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:fn="http://www.w3.org/2005/xpath-functions"
+                xmlns:aixm="http://www.aixm.aero/schema/5.1">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
 	<!--identity transformation to copy the unchanged nodes-->
