@@ -32,14 +32,35 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
                 xmlns:src_aixm="http://www.aixm.aero/schema/5.1"
-                xmlns:aixm="http://www.aixm.aero/schema/5.1">
+                xmlns:src_message="http://www.aixm.aero/schema/5.1/message"
+                xmlns:aixm="http://www.aixm.aero/schema/5.1.1"
+                xmlns:message="http://www.aixm.aero/schema/5.1.1/message">
 	<xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
 
 	<!--identity transformation to copy the unchanged nodes-->
 <xsl:template match="@*|node()">
-	<xsl:copy>
+	<xsl:copy copy-namespaces="no">
 		<xsl:apply-templates select="@*|node()"/>
 	</xsl:copy>
+</xsl:template>
+
+	<!-- transform aixm namespace URI, attempting to (re)use prefix 'aixm' -->
+<xsl:template match="src_aixm:*">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:apply-templates select="@*|node()"/>
+	</xsl:element>
+</xsl:template>
+
+	<!-- transform message namespace URI, attempting to (re)use prefix 'message' -->
+<xsl:template match="src_message:*">
+	<xsl:element name="message:{local-name()}">
+		<xsl:if test="not(ancestor::*)">
+			<xsl:copy-of select="namespace::*[not(local-name()=('aixm','message'))]"/>
+			<xsl:namespace name="aixm" select="'http://www.aixm.aero/schema/5.1.1'"/>
+			<xsl:namespace name="message" select="'http://www.aixm.aero/schema/5.1.1/message'"/>
+		</xsl:if>
+		<xsl:apply-templates select="@*|node()"/>
+	</xsl:element>
 </xsl:template>
 
 	<!-- script implementing change proposal AIXM-139 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-139 )-->
