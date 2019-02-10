@@ -83,16 +83,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<xsl:when test="aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 			<xsl:copy>
 				<xsl:copy-of select="@gml:id"/>
-				<xsl:copy-of select="gml:validTime" use-when="exists('gml:validTime')"/>
-				<xsl:copy-of select="aixm:interpretation" use-when="exists('aixm:interpretation')"/>
-				<xsl:copy-of select="aixm:sequenceNumber" use-when="exists('aixm:sequenceNumber')"/>
-				<xsl:copy-of select="aixm:correctionNumber" use-when="exists('aixm:correctionNumber')"/>
-				<xsl:copy-of select="aixm:featureLifetime" use-when="exists('aixm:featureLifetime')"/>
-				<xsl:copy-of select="aixm:series" use-when="exists('aixm:series')"/>
-				<xsl:copy-of select="aixm:unitOfMeasurement" use-when="exists('aixm:unitOfMeasurement')"/>
-				<xsl:copy-of select="aixm:separation" use-when="exists('aixm:separation')"/>
-				<xsl:copy-of select="aixm:level" use-when="exists('aixm:level')"/>
-				<xsl:copy-of select="aixm:levelTable" use-when="exists('aixm:levelTable')"/>
+				<xsl:copy-of select="gml:validTime"/>
+				<xsl:copy-of select="aixm:interpretation"/>
+				<xsl:copy-of select="aixm:sequenceNumber"/>
+				<xsl:copy-of select="aixm:correctionNumber"/>
+				<xsl:copy-of select="aixm:featureLifetime"/>
+				<xsl:copy-of select="aixm:series"/>
+				<xsl:copy-of select="aixm:unitOfMeasurement"/>
+				<xsl:copy-of select="aixm:separation"/>
+				<xsl:copy-of select="aixm:level"/>
+				<xsl:copy-of select="aixm:levelTable"/>
 				<xsl:element name="aixm:annotation">
 					<xsl:element name="aixm:Note">
 						<xsl:attribute name="gml:id" select="generate-id()"/>
@@ -108,8 +108,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						</xsl:element>
 					</xsl:element>
 				</xsl:element>
-				<xsl:copy-of select="aixm:annotation" use-when="exists('aixm:annotation')"/>
-				<xsl:copy-of select="aixm:extension" use-when="exists('aixm:extension')"/>
+				<xsl:copy-of select="aixm:annotation"/>
+				<xsl:copy-of select="aixm:extension"/>
 			</xsl:copy>
 		</xsl:when>
 		<xsl:otherwise>
@@ -123,16 +123,16 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<xsl:when test="aixm:designator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 			<xsl:copy>
 				<xsl:copy-of select="@gml:id"/>
-				<xsl:copy-of select="gml:validTime" use-when="exists('gml:validTime')"/>
-				<xsl:copy-of select="aixm:interpretation" use-when="exists('aixm:interpretation')"/>
-				<xsl:copy-of select="aixm:sequenceNumber" use-when="exists('aixm:sequenceNumber')"/>
-				<xsl:copy-of select="aixm:correctionNumber" use-when="exists('aixm:correctionNumber')"/>
-				<xsl:copy-of select="aixm:featureLifetime" use-when="exists('aixm:featureLifetime')"/>
-				<xsl:copy-of select="aixm:designator" use-when="exists('aixm:designator')"/>
-				<xsl:copy-of select="aixm:type" use-when="exists('aixm:type')"/>
-				<xsl:copy-of select="aixm:colour" use-when="exists('aixm:colour')"/>
-				<xsl:copy-of select="aixm:theSeaplaneLandingArea" use-when="exists('aixm:theSeaplaneLandingArea')"/>
-				<xsl:copy-of select="aixm:location" use-when="exists('aixm:location')"/>
+				<xsl:copy-of select="gml:validTime"/>
+				<xsl:copy-of select="aixm:interpretation"/>
+				<xsl:copy-of select="aixm:sequenceNumber"/>
+				<xsl:copy-of select="aixm:correctionNumber"/>
+				<xsl:copy-of select="aixm:featureLifetime"/>
+				<xsl:copy-of select="aixm:designator"/>
+				<xsl:copy-of select="aixm:type"/>
+				<xsl:copy-of select="aixm:colour"/>
+				<xsl:copy-of select="aixm:theSeaplaneLandingArea"/>
+				<xsl:copy-of select="aixm:location"/>
 				<xsl:element name="aixm:annotation">
 					<xsl:element name="aixm:Note">
 						<xsl:attribute name="gml:id" select="generate-id()"/>
@@ -148,8 +148,8 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						</xsl:element>
 					</xsl:element>
 				</xsl:element>
-				<xsl:copy-of select="aixm:annotation" use-when="exists('aixm:annotation')"/>
-				<xsl:copy-of select="aixm:extension" use-when="exists('aixm:extension')"/>
+				<xsl:copy-of select="aixm:annotation"/>
+				<xsl:copy-of select="aixm:extension"/>
 			</xsl:copy>
 		</xsl:when>
 		<xsl:otherwise>
@@ -163,19 +163,19 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<xsl:when test="aixm:routeIndicator[@nilReason] or aixm:referencePathIdentifier[@nilReason] or aixm:codeICAO[@nilReason]">
 			<xsl:copy>
 				<xsl:copy-of select="@gml:id"/>
-				<xsl:copy-of select="aixm:horizontalAlarmLimit" use-when="exists('aixm:horizontalAlarmLimit')"/>
-				<xsl:copy-of select="aixm:verticalAlarmLimit" use-when="exists('aixm:verticalAlarmLimit')"/>
-				<xsl:copy-of select="aixm:thresholdCourseWidth" use-when="exists('aixm:thresholdCourseWidth')"/>
-				<xsl:copy-of select="aixm:lengthOffset" use-when="exists('aixm:lengthOffset')"/>
-				<xsl:copy-of select="aixm:CRCRemainder" use-when="exists('aixm:CRCRemainder')"/>
-				<xsl:copy-of select="aixm:operationType" use-when="exists('aixm:operationType')"/>
-				<xsl:copy-of select="aixm:serviceProviderSBAS" use-when="exists('aixm:serviceProviderSBAS')"/>
-				<xsl:copy-of select="aixm:approachPerformanceDesignator" use-when="exists('aixm:approachPerformanceDesignator')"/>
-				<xsl:copy-of select="aixm:routeIndicator" use-when="exists('aixm:routeIndicator')"/>
-				<xsl:copy-of select="aixm:referencePathDataSelector" use-when="exists('aixm:referencePathDataSelector')"/>
-				<xsl:copy-of select="aixm:referencePathIdentifier" use-when="exists('aixm:referencePathIdentifier')"/>
-				<xsl:copy-of select="aixm:codeICAO" use-when="exists('aixm:codeICAO')"/>
-				<xsl:copy-of select="aixm:annotation" use-when="exists('aixm:annotation')"/>
+				<xsl:copy-of select="aixm:horizontalAlarmLimit"/>
+				<xsl:copy-of select="aixm:verticalAlarmLimit"/>
+				<xsl:copy-of select="aixm:thresholdCourseWidth"/>
+				<xsl:copy-of select="aixm:lengthOffset"/>
+				<xsl:copy-of select="aixm:CRCRemainder"/>
+				<xsl:copy-of select="aixm:operationType"/>
+				<xsl:copy-of select="aixm:serviceProviderSBAS"/>
+				<xsl:copy-of select="aixm:approachPerformanceDesignator"/>
+				<xsl:copy-of select="aixm:routeIndicator"/>
+				<xsl:copy-of select="aixm:referencePathDataSelector"/>
+				<xsl:copy-of select="aixm:referencePathIdentifier"/>
+				<xsl:copy-of select="aixm:codeICAO"/>
+				<xsl:copy-of select="aixm:annotation"/>
 				<xsl:if test="aixm:routeIndicator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 					<xsl:element name="aixm:annotation">
 						<xsl:element name="aixm:Note">
@@ -227,7 +227,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						</xsl:element>
 					</xsl:element>
 				</xsl:if>
-				<xsl:copy-of select="aixm:extension" use-when="exists('aixm:extension')"/>
+				<xsl:copy-of select="aixm:extension"/>
 			</xsl:copy>
 		</xsl:when>
 		<xsl:otherwise>
@@ -267,7 +267,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 		<xsl:otherwise>
 			<xsl:copy>
 				<xsl:copy-of select="@gml:id"/>
-				<xsl:copy-of select="aixm:purpose" use-when="exists('aixm:purpose')"/>
+				<xsl:copy-of select="aixm:purpose"/>
 				<xsl:element name="aixm:translatedNote">
 					<xsl:element name="aixm:LinguisticNote">
 						<xsl:attribute name="gml:id" select="generate-id()"/>
@@ -276,7 +276,7 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 						</xsl:element>
 					</xsl:element>
 				</xsl:element>
-				<xsl:copy-of select="aixm:translatedNote" use-when="exists('aixm:translatedNote')"/>
+				<xsl:copy-of select="aixm:translatedNote"/>
 			</xsl:copy>
 		</xsl:otherwise>
 	</xsl:choose>
