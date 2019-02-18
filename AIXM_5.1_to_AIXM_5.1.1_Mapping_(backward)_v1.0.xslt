@@ -103,9 +103,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 
 	<!--script implementing change proposal AIXM-146 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-146 )-->
 <xsl:template match="src_aixm:StandardLevelColumnTimeSlice[src_aixm:unitOfMeasurement]">
-	<xsl:choose>
-		<xsl:when test="src_aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
-			<xsl:element name="aixm:{local-name()}">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:choose>
+			<xsl:when test="src_aixm:unitOfMeasurement[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="gml:validTime"/>
 				<xsl:apply-templates select="src_aixm:interpretation"/>
@@ -134,18 +134,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</xsl:element>
 				<xsl:apply-templates select="src_aixm:annotation"/>
 				<xsl:apply-templates select="src_aixm:extension"/>
-			</xsl:element>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:apply-templates select="."/>
-		</xsl:otherwise>
-	</xsl:choose>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates select="@*|node()"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:element>
 </xsl:template>
 
 <xsl:template match="src_aixm:MarkingBuoyTimeSlice[src_aixm:designator]">
-	<xsl:choose>
-		<xsl:when test="src_aixm:designator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
-			<xsl:element name="aixm:{local-name()}">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:choose>
+			<xsl:when test="src_aixm:designator[@nilReason[text()=('inapplicable','missing','template','unknown','withheld')]]">
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="gml:validTime"/>
 				<xsl:apply-templates select="src_aixm:interpretation"/>
@@ -174,18 +174,18 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 				</xsl:element>
 				<xsl:apply-templates select="src_aixm:annotation"/>
 				<xsl:apply-templates select="src_aixm:extension"/>
-			</xsl:element>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:apply-templates select="."/>
-		</xsl:otherwise>
-	</xsl:choose>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates select="@*|node()"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:element>
 </xsl:template>
 
 <xsl:template match="src_aixm:FASDataBlock">
-	<xsl:choose>
-		<xsl:when test="src_aixm:routeIndicator[@nilReason] or src_aixm:referencePathIdentifier[@nilReason] or src_aixm:codeICAO[@nilReason]">
-			<xsl:element name="aixm:{local-name()}">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:choose>
+			<xsl:when test="src_aixm:routeIndicator[@nilReason] or src_aixm:referencePathIdentifier[@nilReason] or src_aixm:codeICAO[@nilReason]">
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="src_aixm:horizontalAlarmLimit"/>
 				<xsl:apply-templates select="src_aixm:verticalAlarmLimit"/>
@@ -252,23 +252,23 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					</xsl:element>
 				</xsl:if>
 				<xsl:apply-templates select="src_aixm:extension"/>
-			</xsl:element>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:apply-templates select="."/>
-		</xsl:otherwise>
-	</xsl:choose>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:apply-templates select="@*|node()"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:element>
 </xsl:template>
 
 	<!--script implementing change proposal AIXM-164 (for more information please use the following link: https://aixmccb.atlassian.net/browse/AIXM-164 )-->
 	<!--fn:matches was used to identify the required pattern for Note.propertyName-->
 <xsl:template match="src_aixm:Note[src_aixm:propertyName]">
-	<xsl:choose>
-		<xsl:when test="src_aixm:propertyName[matches(text(),'^[a-z][A-Za-z]*$')]">
-			<xsl:apply-templates select="."/>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:element name="aixm:{local-name()}">
+	<xsl:element name="aixm:{local-name()}">
+		<xsl:choose>
+			<xsl:when test="src_aixm:propertyName[matches(text(),'^[a-z][A-Za-z]*$')]">
+				<xsl:apply-templates select="@*|node()"/>
+			</xsl:when>
+			<xsl:otherwise>
 				<xsl:apply-templates select="@gml:id"/>
 				<xsl:apply-templates select="src_aixm:purpose"/>
 				<xsl:element name="aixm:translatedNote">
@@ -280,9 +280,9 @@ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
 					</xsl:element>
 				</xsl:element>
 				<xsl:apply-templates select="src_aixm:translatedNote"/>
-			</xsl:element>
-		</xsl:otherwise>
-	</xsl:choose>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:element>
 </xsl:template>
 
 </xsl:stylesheet>
